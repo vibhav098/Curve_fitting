@@ -67,8 +67,7 @@ if __name__ == '__main__':
     for i in range(data_size):
         total_data[i][0] = (random.uniform(-10,10))
         target[i][0] = (targ(total_data[i][0]))
-    # target = target + np.random.uniform(-5,5,(data_size,1))
-
+    target = target + np.random.normal(0,0.25,(data_size,1))
     # data = {'input': total_data,'output': target}
     # file = pd.DataFrame(data)
     # file.to_csv('Data.csv', index=False)
