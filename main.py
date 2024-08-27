@@ -35,7 +35,7 @@ def predict(m,weights,x):
 #(3x**3-100x**2+72*x)/1000 + 50
 
 def targ(x):
-    return (3*x**3-100*x**2 + 72*x)/1000 + 50
+    return math.sin(x)
 def model(total_data,target,m):
     D = int(length_of_design_matrix(m, Dimensions));
     train_data = total_data[:int(len(total_data)*0.7),:]
@@ -65,9 +65,9 @@ if __name__ == '__main__':
     total_data = np.zeros((data_size,Dimensions))
     target = np.zeros((data_size,1))
     for i in range(data_size):
-        total_data[i][0] = (random.uniform(-18,40))
+        total_data[i][0] = (random.uniform(-10,10))
         target[i][0] = (targ(total_data[i][0]))
-    target = target + np.random.uniform(-5,5,(data_size,1))
+    # target = target + np.random.uniform(-5,5,(data_size,1))
 
     # data = {'input': total_data,'output': target}
     # file = pd.DataFrame(data)
@@ -76,13 +76,13 @@ if __name__ == '__main__':
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
     Erms_train = []
     Erms_test = []
-    for m in range(1,10):
+    for m in range(1,25):
         x = model(total_data,target,m)
         print(x[2])
         Erms_test.append(x[0])
         Erms_train.append(x[1])
 
-    model_orders = list(range(1, 10))
+    model_orders = list(range(1, 25))
 
 # Create the plot
     plt.figure(figsize=(10, 6))
